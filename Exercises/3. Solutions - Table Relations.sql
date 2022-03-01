@@ -1,22 +1,21 @@
--- Problem 1
 CREATE DATABASE TableRelationsDB
-
 USE TableRelationsDB
 
+
+-- Problem 1
 CREATE TABLE Passports 
 ( 
       PassportID INT PRIMARY KEY NOT NULL,
 	  PassportNumber CHAR(30),
 )
-
 CREATE TABLE Persons
 (
-      PersonID INT NOT NULL,
-	  FirstName VARCHAR(30),
-	  Salary FLOAT NOT NULL,
-	  PassportID INT,
-	  PRIMARY KEY (PersonID),
-	  FOREIGN KEY (PassportID) REFERENCES Passports(PassportID)
+	PersonID INT NOT NULL,
+	FirstName VARCHAR(30),
+	Salary FLOAT NOT NULL,
+	PassportID INT,
+	PRIMARY KEY (PersonID),
+	FOREIGN KEY (PassportID) REFERENCES Passports(PassportID)
 )
 
 INSERT INTO Passports (PassportID, PassportNumber)
@@ -24,7 +23,6 @@ INSERT INTO Passports (PassportID, PassportNumber)
 	   (101, 'N34FG21B'),
 	   (102, 'K65LO4R7'),
 	   (103, 'ZE657QP2')
-
 INSERT INTO Persons (PersonID, FirstName, Salary, PassportID)
        VALUES
 	  (1, 'Roberto', 43300.00, 102),
@@ -34,20 +32,18 @@ INSERT INTO Persons (PersonID, FirstName, Salary, PassportID)
 
 -- Problem 2 
 USE MyDemoData
-
 CREATE TABLE Manufacturers
 ( 
-       ManufacturerID INT NOT NULL,
-	   [Name] VARCHAR(30) NOT NULL,
-	   EstablishedOn VARCHAR(30) NOT NULL,
-	   PRIMARY KEY (ManufacturerID)
+        ManufacturerID INT NOT NULL,
+	[Name] VARCHAR(30) NOT NULL,
+	EstablishedOn VARCHAR(30) NOT NULL,
+	PRIMARY KEY (ManufacturerID)
 )
-
 CREATE TABLE Models
 ( 
-       ModelID INT NOT NULL PRIMARY KEY,
-	   [Name] VARCHAR(30) NOT NULL,
-	   ManufacturerID INT NOT NULL FOREIGN KEY REFERENCES Manufacturers(ManufacturerID)
+        ModelID INT NOT NULL PRIMARY KEY,
+	[Name] VARCHAR(30) NOT NULL,
+	ManufacturerID INT NOT NULL FOREIGN KEY REFERENCES Manufacturers(ManufacturerID)
 )
 
 INSERT INTO Manufacturers (ManufacturerID, [Name], EstablishedOn)
@@ -55,7 +51,6 @@ INSERT INTO Manufacturers (ManufacturerID, [Name], EstablishedOn)
 	   (1, 'BMW', '07/03/1916'),
 	   (2, 'Tesla', '01/01/2003'),
 	   (3, 'Lada', '01/05/1966')
-
 INSERT INTO Models (ModelID, [Name], ManufacturerID)
        VALUES
 	   (101, 'X1', 1),
@@ -68,26 +63,23 @@ INSERT INTO Models (ModelID, [Name], ManufacturerID)
 
 -- Problem 3
 USE MyDemoData
-
 CREATE TABLE Students
 (      
-       StudentID INT NOT NULL PRIMARY KEY,
-	   [Name] VARCHAR(30) NOT NULL,
+        StudentID INT NOT NULL PRIMARY KEY,
+	[Name] VARCHAR(30) NOT NULL,
 )
-
 CREATE TABLE Exams
 (
-       ExamID INT NOT NULL PRIMARY KEY,
-	   [Name] VARCHAR(30) NOT NULL,
+        ExamID INT NOT NULL PRIMARY KEY,
+	[Name] VARCHAR(30) NOT NULL,
 )
-
 CREATE TABLE StudentsExams
 (
-       StudentID INT NOT NULL,
-	   ExamID INT NOT NULL,
-	   PRIMARY KEY (StudentID, ExamID),
-	   FOREIGN KEY (StudentID) REFERENCES Students(StudentID),
-	   FOREIGN KEY (ExamID) REFERENCES Exams(ExamID)
+        StudentID INT NOT NULL,
+	ExamID INT NOT NULL,
+	PRIMARY KEY (StudentID, ExamID),
+	FOREIGN KEY (StudentID) REFERENCES Students(StudentID),
+	FOREIGN KEY (ExamID) REFERENCES Exams(ExamID)
 )
 
 INSERT INTO Students (StudentID, [Name])
@@ -95,13 +87,11 @@ INSERT INTO Students (StudentID, [Name])
 	   (1, 'Mila'),
 	   (2, 'Toni'),
 	   (3, 'Ron')
-
 INSERT INTO Exams (ExamID, [Name])
        VALUES
 	   (101, 'SpringMVC'),
 	   (102, 'Neo4j'),
 	   (103, 'Oracle 11g')
-
 INSERT INTO StudentsExams (StudentID, ExamID)
        VALUES 
 	   (1, 101),
@@ -126,7 +116,6 @@ CREATE TABLE Teachers
 -- Problem 5
 CREATE DATABASE OnlineStore
 USE OnlineStore
-
 CREATE TABLE Cities
 (
 	CityID INT NOT NULL PRIMARY KEY,
@@ -179,7 +168,6 @@ ALTER TABLE OrderItems
 -- Problem 6
 CREATE DATABASE University 
 USE University
-
 DROP DATABASE University 
 
 CREATE TABLE Majors
@@ -202,17 +190,14 @@ CREATE TABLE Payments
 	PaymetID INT NOT NULL PRIMARY KEY,
 	PaymentDate DATE NOT NULL,
 	PaymentAmaout DECIMAL,
-
 	StudentID INT NOT NULL,
 	FOREIGN KEY (StudentID) REFERENCES Students (StudentID)
 )
-
 CREATE TABLE Subjects
 (
 	SubjectID INT NOT NULL PRIMARY KEY,
 	SubjectName INT NOT NULL,
 )
-
 CREATE TABLE Agenda
 (
 	StudentID INT NOT NULL,
@@ -223,4 +208,3 @@ ALTER TABLE Agenda
 	ADD FOREIGN KEY (StudentID) REFERENCES Students(StudentID)
 ALTER TABLE Agenda
 	ADD FOREIGN KEY (SubjectID) REFERENCES Subjects(SubjectID)
-
