@@ -7,7 +7,6 @@ CREATE TABLE Sizes
 	[Length] INT NOT NULL,
 	RingRange DECIMAL(16,2) NOT NULL
 )
-
 CREATE TABLE Tastes
 (
 	Id INT IDENTITY PRIMARY KEY,
@@ -15,14 +14,12 @@ CREATE TABLE Tastes
 	TasteStrength VARCHAR(15) NOT NULL,
 	ImageURL NVARCHAR(100) NOT NULL
 )
-
 CREATE TABLE Brands
 (
 	Id INT IDENTITY PRIMARY KEY,
 	BrandName VARCHAR(30) UNIQUE NOT NULL,
 	BrandDescription VARCHAR(MAX)
 )
-
 CREATE TABLE Cigars
 (
 	Id INT IDENTITY PRIMARY KEY,
@@ -33,7 +30,6 @@ CREATE TABLE Cigars
 	PriceForSingleCigar DECIMAL(16,2) NOT NULL,
 	ImageURL NVARCHAR(100) NOT NULL
 )
-
 CREATE TABLE Addresses
 (
 	Id INT IDENTITY PRIMARY KEY,
@@ -50,7 +46,6 @@ CREATE TABLE Clients
 	Email NVARCHAR(50) NOT NULL,
 	AddressId INT FOREIGN KEY REFERENCES Addresses(Id) NOT NULL
 )
-
 CREATE TABLE ClientsCigars
 (
 	ClientId INT FOREIGN KEY REFERENCES Clients(Id),
@@ -168,12 +163,11 @@ SELECT
 CREATE OR ALTER FUNCTION udf_ClientWithCigars(@name VARCHAR(50)) 
 RETURNS INT
 BEGIN 
-		DECLARE @Result INT = (SELECT 
-								COUNT(*)
-								FROM Clients c
-								JOIN ClientsCigars cc ON cc.ClientId = c.Id
-								WHERE c.FirstName = @name)
-
+	DECLARE @Result INT = (SELECT 
+		COUNT(*)
+		FROM Clients c
+		JOIN ClientsCigars cc ON cc.ClientId = c.Id
+		WHERE c.FirstName = @name)
 	RETURN @Result
 END
 
