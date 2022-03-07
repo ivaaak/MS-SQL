@@ -10,7 +10,6 @@ CREATE TABLE Clients
 	Phone VARCHAR(12),
 	CHECK (LEN(Phone) = 12)
 )
-
 CREATE TABLE Mechanics
 (
 	MechanicId INT IDENTITY PRIMARY KEY,
@@ -18,19 +17,16 @@ CREATE TABLE Mechanics
 	LastName VARCHAR(50),
 	[Address] VARCHAR(255)
 )
-
 CREATE TABLE Models
 (
 	ModelId INT IDENTITY PRIMARY KEY,
 	[Name] VARCHAR(50) UNIQUE
 )
-
 CREATE TABLE Vendors
 (
 	VendorId INT IDENTITY PRIMARY KEY,
 	[Name] VARCHAR(50) UNIQUE
 )
-
 CREATE TABLE Jobs
 (
 	JobId INT IDENTITY PRIMARY KEY,
@@ -41,7 +37,6 @@ CREATE TABLE Jobs
     IssueDate DATE,
     FinishDate DATE,
 )
-
 CREATE TABLE Orders
 (
 	OrderId INT IDENTITY PRIMARY KEY,
@@ -49,7 +44,6 @@ CREATE TABLE Orders
 	IssueDate DATE,
 	Delivered BIT DEFAULT 0
 )
-
 CREATE TABLE Parts
 (
 	PartId INT IDENTITY PRIMARY KEY,
@@ -60,7 +54,6 @@ CREATE TABLE Parts
 	VendorId INT REFERENCES Vendors (VendorId),
 	StockQty INT DEFAULT 0,
 )
-
 CREATE TABLE OrderParts
 (
 	OrderId INT REFERENCES Orders (OrderId),
@@ -68,7 +61,6 @@ CREATE TABLE OrderParts
 	PRIMARY KEY (OrderId, PartId),
 	Quantity INT DEFAULT 1,
 )
-
 CREATE TABLE PartsNeeded
 (
 	JobId INT REFERENCES Jobs (JobId),
@@ -89,7 +81,6 @@ INSERT INTO Clients (FirstName, LastName, Phone) VALUES
 ('Lemuel',	    'Latzke',			'631-748-6479'),
 ('Melodie',	    'Knipp',			'805-690-1682'),
 ('Candida',	    'Corbley',			'908-275-8357')
-
 
 INSERT INTO Parts (SerialNumber, [Description], Price, VendorId) VALUES
 ('WP8182119',	'Door Boot Seal',			   117.86,	2),
