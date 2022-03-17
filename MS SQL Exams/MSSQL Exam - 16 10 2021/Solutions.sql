@@ -87,16 +87,14 @@ DELETE Addresses
 
 
 -- Problem 5
-SELECT 
-	CigarName,
+SELECT CigarName,
 	PriceForSingleCigar,
 	ImageURL
 		FROM Cigars
 	ORDER BY PriceForSingleCigar ASC, CigarName DESC
 
 -- Problem 6
-SELECT 
-	cs.Id,
+SELECT cs.Id,
 	cs.CigarName,
 	cs.PriceForSingleCigar,
 	ts.TasteType,
@@ -108,8 +106,7 @@ SELECT
 
 
 -- Problem 7
-SELECT 
-	cs.Id,
+SELECT cs.Id,
 	cs.FirstName + ' ' + cs.LastName AS [ClientName],
 	cs.Email
 		FROM Clients cs
@@ -132,8 +129,7 @@ SELECT TOP (5)
 
 
 -- Problem 9
-SELECT 
-	CONCAT(FirstName , ' ' , LastName) AS [FullName],
+SELECT CONCAT(FirstName , ' ' , LastName) AS [FullName],
 	ads.Country,
 	ads.ZIP,
 	CONCAT('$', MAX([PriceForSingleCigar])) AS [CigarPrice]
@@ -147,8 +143,7 @@ SELECT
 
 
 -- Problem 10
-SELECT 
-	c.LastName,
+SELECT c.LastName,
 	AVG(sz.[Length]) AS [CiagrLength],
 	CEILING(AVG(sz.RingRange)) AS [CigarRingRange]
 		FROM Clients c
@@ -175,8 +170,7 @@ END
 -- Problem 12
 CREATE OR ALTER PROC usp_SearchByTaste(@taste VARCHAR(50))
 AS
-	SELECT 
-	c.CigarName AS [CigarName],
+	SELECT c.CigarName AS [CigarName],
 	CONCAT('$', c.PriceForSingleCigar) AS [Price],
 	t.TasteType,
 	b.BrandName,
