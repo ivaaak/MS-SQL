@@ -111,8 +111,7 @@ DELETE FROM OrderParts WHERE OrderId = 19;
 
 
 --Problem 5
-SELECT 
-	mec.FirstName + ' ' + mec.LastName AS [Mechanic],
+SELECT mec.FirstName + ' ' + mec.LastName AS [Mechanic],
 	j.[Status],
 	j.IssueDate
 	FROM Mechanics mec
@@ -121,8 +120,7 @@ SELECT
 	
 	
 --Problem 6
-SELECT 
-	c.FirstName + ' ' + c.LastName AS [Client],
+SELECT c.FirstName + ' ' + c.LastName AS [Client],
 	DATEDIFF(DAY, j.IssueDate, '24 April 2017') AS [Days going],
 	[Status]
 	FROM Clients c
