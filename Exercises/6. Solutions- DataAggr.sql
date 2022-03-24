@@ -1,11 +1,14 @@
 USE Gringotts
+
 --- Problem 1
 SELECT COUNT(*) AS Count
 	FROM WizzardDeposits wd
 
+
 --- Problem 2
 SELECT MAX(wd.MagicWandSize) AS LongestMagicWand
 	FROM WizzardDeposits wd
+
 
 --- Problem 3
 SELECT wd.DepositGroup, 
